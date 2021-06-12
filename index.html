@@ -22,23 +22,21 @@
     <nav>
       <h3>Select your preferences!</h3>
       <br>
-      <h3>Rover List</h3>
-      <br>
-      <p>Don't see a list? Make sure you have a Rover selected!</p><br>
-      <div id="banner-message">
-        <h3>Select a Rover<h3>
+      <label>Rover Select</label>
+    <select class="browser-default">
+    <option value="" disabled selected>Choose your option</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+    </select>
 
-            <select class="rover_select">
-              <option></option>
-            </select>
-      </div>
 
       <br>
       <span id="buttonSelect">
         <form action="#">
           <p>
             <label>
-              <input name="frontCamera" type="radio" checked />
+              <input name="frontCamera" type="radio" />
               <span>Front Camera</span>
             </label>
           </p>
@@ -50,7 +48,7 @@
           </p>
           <p>
             <label>
-              <input name="navCamera" type="radio" disabled="disabled" />
+              <input name="navCamera" type="radio"  />
               <span>Navigation Camera</span>
             </label>
           </p>
