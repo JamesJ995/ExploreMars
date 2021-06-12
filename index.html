@@ -35,10 +35,26 @@
 
       <br>
       <span id="buttonSelect">
-        <!--radios-->
-        <button id="frontCameraBtn"> Front Camera </button>
-        <button id="backCameraBtn"> Back Camera </button>
-        <button id="navCameraBtn"> Navigation Camera </button>
+        <form action="#">
+          <p>
+            <label>
+              <input name="frontCamera" type="radio" checked />
+              <span>Front Camera</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input name="backCamera" type="radio" />
+              <span>Back Camera</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input name="navCamera" type="radio" disabled="disabled" />
+              <span>Navigation Camera</span>
+            </label>
+          </p>
+        </form>
       </span>
 
 
