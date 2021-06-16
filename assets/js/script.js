@@ -18,7 +18,7 @@ var getRoverPhotos = function (rover, date, camera) {
     date +
     "&camera=" +
     camera +
-    "&api_key=DEMO_KEY";
+    "&api_key=ZoQFVDjeRVJElw1XyEu82ZMkIXeAWsIJ2HAE23Mq";
   fetch(apiUrl)
     .then(function (response) {
       if (response.ok) {

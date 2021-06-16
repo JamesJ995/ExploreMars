@@ -1,7 +1,21 @@
+body {
+  font-family:Arial, Helvetica, sans-serif;
+}
+
 .img {
-    width: 500px;
-    height: 500px;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+  width: 500px;
+  height: 500px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#titleHeader {
+  background: rgb(172, 7, 19);
+  background: linear-gradient(
+    90deg,
+    rgba(172, 7, 19, 1) 0%,
+    rgba(126, 68, 54, 1) 65%,
+    rgba(145, 82, 9, 1) 100%
+  );
+}
