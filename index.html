@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="assets/css/materialize.css" media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="assets/css/style.css" media="screen,projection" />
-    <title>Explore Mars Rovers</title>
-</head>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="assets/css/materialize.css"
+      media="screen,projection"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="assets/css/style.css"
+      media="screen,projection"
+    />
+    <title>Explore Mars</title>
+  </head>
 
 <body>
     <div class="row">
@@ -26,23 +38,18 @@
             </p>
         </div>
 
-        <div class="col s2" id="roverSelect">
-            <div class="container" id="roverSelect">
-                <h3>Select a Rover:</h3>
-                <div class="input-field col s12">
-                    <select id="roverMenu">
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Curiosity</option>
-                        <option value="2">Opportunity</option>
-                        <option value="3">Spirit</option>
-                    </select>
-                    <label></label>
-                </div>
-            </div>
-            <div class="container" id="dateSelect">
-                <h3>Select a Date:</h3>
-                <input type="text" class="datepicker">
-            </div>
+    <div class="container" id="roverSelect">
+      <h3>Select a Rover!</h3>
+      <div class="input-field col s12">
+        <select id="roverMenu">
+          <option value="" disabled selected>Choose your option</option>
+          <option value="curiosity">Curiosity</option>
+          <option value="opportunity">Opportunity</option>
+          <option value="spirit">Spirit</option>
+        </select>
+        <label></label>
+      </div>
+    </div>
 
             <div class="container" id="buttonSelect">
                 <h3>Select a Camera:</h3>
@@ -80,10 +87,23 @@
         </div>
         
     </div>
-    <div class="parallax-container">
-        <div class="parallax"><img src="./assets/Images/marsBottom.png"></div>
+
+    <div class="container">
+      <img class="img" id="rover_image" src="" />
     </div>
+
+    <div class="container">
+      <h3><br />Recent Searches</h3>
+      <div class="column" style="background-color: #cccccc"></div>
+      <div class="column" style="background-color: #cccccc"></div>
+      <div class="column" style="background-color: #cccccc"></div>
     </div>
+
+    <footer>
+      <a href="page2.html"
+        >Could put a second page here if needed... prob not</a
+      >
+    </footer>
 
     <!-- Jquery script -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -93,6 +113,5 @@
     <script type="text/javascript" src="./assets/js/materialize.js"></script>
     <!-- our java -->
     <script src="./assets/js/script.js"></script>
-</body>
-
+  </body>
 </html>
