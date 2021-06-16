@@ -64,3 +64,11 @@ roverChoice.addEventListener("change", function (event) {
   console.log(rover);
   getRoverPhotos(rover);
 });
+
+$(document).ready(function () {
+  $(".materialboxed").materialbox();
+});
+
+$(document).ready(function () {
+  $(".datepicker").datepicker();
+});
