@@ -10,68 +10,74 @@
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="assets/css/materialize.css" media="screen,projection" />
     <link type="text/css" rel="stylesheet" href="assets/css/style.css" media="screen,projection" />
-    <title>Explore Mars</title>
+    <title>Explore Mars Rovers</title>
 </head>
 
 <body>
-    <header class="container">
-        <h2>Exploring Mars</h2>
-        <p class="lead">
-            Come see the lastest photos and information about Mars!
-        </p>
-    </header>
-
-    <div class="container" id="roverSelect">
-        <h3>Select a Rover!</h3>
-        <div class="input-field col s12">
-            <select id="roverMenu">
-                <option value="" disabled selected>Choose your option</option>
-                <option value="1">Curiosity</option>
-                <option value="2">Opportunity</option>
-                <option value="3">Spirit</option>
-            </select>
-            <label></label>
+    <div class="row">
+        <div class="parallax-container">
+            <div class="parallax"><img src="./assets/Images/marsTop.png"></div>
         </div>
-    </div>
-
-    <div class="container" id="buttonSelect">
-        <h3>Select a camera!</h3>
-        <form action="#">
-            <p>
-                <label>
-                    <input id="frntCamBtn" name="group1" type="radio" />
-                    <span>Front Camera</span>
-                </label>
+        <div class="col s12 center-align" id="titleHeader">
+            <h2>Exploring Mars Rovers</h2>
+            <p class="lead">
+                Here you can view mars from three of the rovers NASA currently has
+                there.
             </p>
-            <p>
-                <label>
-                    <input id="bckCamBtn" name="group1" type="radio" />
-                    <span>Back Camera</span>
-                </label>
-            </p>
-            <p>
-                <label>
-                    <input id="navCamBtn" name="group1" type="radio" />
-                    <span>Navigation Camera</span>
-                </label>
-            </p>
-        </form>
-    </div>
+        </div>
 
-    <div class="container">
-        <img class="img" id="rover_image" src="" />
-    </div>
+        <div class="col s2" id="roverSelect">
+            <div class="container" id="roverSelect">
+                <h3>Select a Rover:</h3>
+                <div class="input-field col s12">
+                    <select id="roverMenu">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1">Curiosity</option>
+                        <option value="2">Opportunity</option>
+                        <option value="3">Spirit</option>
+                    </select>
+                    <label></label>
+                </div>
+            </div>
+            <div class="container" id="dateSelect">
+                <h3>Select a Date:</h3>
+                <input type="text" class="datepicker">
+            </div>
 
-    <div class="container">
-        <h3><br />Recent Searches</h3>
-        <div class="column" style="background-color: #cccccc"></div>
-        <div class="column" style="background-color: #cccccc"></div>
-        <div class="column" style="background-color: #cccccc"></div>
+            <div class="container" id="buttonSelect">
+                <h3>Select a Camera:</h3>
+                <form action="#">
+                    <p>
+                        <label>
+                            <input name="group1" type="radio" />
+                            <span>Front Camera</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="group1" type="radio" />
+                            <span>Back Camera</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="group1" type="radio" />
+                            <span>Navigation Camera</span>
+                        </label>
+                    </p>
+                </form>
+            </div>
+        </div>
+        <div class="col s10">
+            <hr>
+            <img class="materialboxed z-depth-5" width="650" id="rover_image" src="" />
+        </div>
+        
     </div>
-
-    <footer>
-        <a href="page2.html">Could put a second page here if needed... prob not</a>
-    </footer>
+    <div class="parallax-container">
+        <div class="parallax"><img src="./assets/Images/marsBottom.png"></div>
+    </div>
+    </div>
 
     <!-- Jquery script -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
