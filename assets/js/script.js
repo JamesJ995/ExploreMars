@@ -2,6 +2,7 @@ var dropDownEl = document.querySelector("#roverSelect");
 var radioBtnEl = document.querySelector("#buttonSelect");
 var roverImageEl = document.querySelector("#rover_image");
 
+
 var formSubmitHandler = function (event) {
   event.preventDefault();
 };
@@ -44,7 +45,7 @@ var displayPhotos = function (api) {
   console.log(roverImage);
 };
 
-var renderMarsWeather = function () {};
+var renderMarsWeather = function () { };
 
 dropDownEl.addEventListener("submit", formSubmitHandler);
 radioBtnEl.addEventListener("submit", formSubmitHandler);
@@ -55,8 +56,18 @@ $(document).ready(function () {
   $("select").formSelect();
 });
 
-$(document).ready(function(){
-  $('.materialboxed').materialbox();
+$(document).ready(function () {
+  $("#frntCamBtn").on("click", function () {
+    camera = "fhaz";
+  });
+  
+  $("#bckCamBtn").on("click", function () {
+    camera = "rhaz";
+  });
+
+  $("#navCamBtn").on("click", function () {
+    camera = "navcam";
+  });
 });
 
 $(document).ready(function(){
@@ -64,6 +75,5 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-  $('.datepicker').datepicker();
+  $('.materialboxed').materialbox();
 });
-     
