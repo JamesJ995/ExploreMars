@@ -10,6 +10,9 @@ var getRoverPhotos = function (rover, date, camera) {
   var rover = rover || "curiosity";
   var date = date || "2016-6-3";
   var camera = camera || "fhaz";
+  console.log(rover);
+  console.log(date);
+  console.log(camera);
   var apiUrl =
     "https://api.nasa.gov/mars-photos/api/v1/rovers/" +
     rover +
