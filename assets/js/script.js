@@ -7,9 +7,9 @@ var formSubmitHandler = function (event) {
 };
 
 var getRoverPhotos = function (rover, date, camera) {
-  var rover = "curiosity";
-  var date = "2016-6-3";
-  var camera = "fhaz";
+  var rover = rover || "curiosity";
+  var date = date || "2016-6-3";
+  var camera = camera || "fhaz";
   var apiUrl =
     "https://api.nasa.gov/mars-photos/api/v1/rovers/" +
     rover +
@@ -49,7 +49,15 @@ var renderMarsWeather = function () {};
 dropDownEl.addEventListener("submit", formSubmitHandler);
 radioBtnEl.addEventListener("submit", formSubmitHandler);
 
-//getRoverPhotos();
+getRoverPhotos();
 $(document).ready(function () {
   $("select").formSelect();
+});
+
+var roverChoice = document.getElementById("roverMenu");
+
+roverChoice.addEventListener("change", function (event) {
+  var rover = event.target.value;
+  console.log(rover);
+  getRoverPhotos(rover);
 });
