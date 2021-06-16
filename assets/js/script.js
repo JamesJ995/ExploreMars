@@ -54,3 +54,16 @@ getRoverPhotos();
 $(document).ready(function () {
   $("select").formSelect();
 });
+
+$(document).ready(function(){
+  $('.materialboxed').materialbox();
+});
+
+$(document).ready(function(){
+  $('.parallax').parallax();
+});
+
+$(document).ready(function(){
+  $('.datepicker').datepicker();
+});
+     
