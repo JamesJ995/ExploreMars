@@ -57,6 +57,20 @@ $(document).ready(function () {
   $("select").formSelect();
 });
 
+$(document).ready(function () {
+  $("#frntCamBtn").on("click", function () {
+    camera = "fhaz";
+  });
+  
+  $("#bckCamBtn").on("click", function () {
+    camera = "rhaz";
+  });
+
+  $("#navCamBtn").on("click", function () {
+    camera = "navcam";
+  });
+});
+
 var roverChoice = document.getElementById("roverMenu");
 
 roverChoice.addEventListener("change", function (event) {
