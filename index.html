@@ -15,18 +15,15 @@
 
 <body>
     <div class="row">
-        <div class="parallax-container">
-            <div class="parallax"><img src="./assets/Images/marsTop.png"></div>
-        </div>
-        <div class="col s12 center-align" id="titleHeader">
-            <h2>Exploring Mars Rovers</h2>
+        <div class="col l12 s12 center-align" id="titleHeader">
+            <h2>Mars Rovers</h2>
             <p class="lead">
                 Here you can view mars from three of the rovers NASA currently has
                 there, as well as see weather data for the selected martian day.
             </p>
         </div>
 
-        <div class="col s2" id="roverSelect">
+        <div class="col l2 s12" id="roverSelect">
             <div class="container" id="roverSelect">
                 <h3>Select a Rover:</h3>
                 <div class="input-field col s12">
@@ -49,36 +46,36 @@
                 <form action="#">
                     <p>
                         <label>
-                            <input name="group1" type="radio" />
+                            <input name="group1" type="radio" id="frntCamBtn" />
                             <span>Front Camera</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input name="group1" type="radio" />
+                            <input name="group1" type="radio" id="bckCamBtn" />
                             <span>Back Camera</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input name="group1" type="radio" />
+                            <input name="group1" type="radio" id="navCamBtn" />
                             <span>Navigation Camera</span>
                         </label>
                     </p>
                 </form>
             </div>
         </div>
-        <div class="col s5">
+        <div class="col l5 s12">
             <hr>
             <h3>Rover Image On: (date here)</h3>
-            <img class="materialboxed z-depth-5" width="650" id="rover_image" src="" />
+            <img class="responsive-img materialboxed z-depth-5" width="650" id="rover_image" src="" />
         </div>
-        <div class="col s5">
+        <div class="col l5 s12">
             <hr>
             <h3>Weather Data For: (date here)</h3>
             <img class="materialboxed z-depth-5" width="650" id="weather_data" src="" />
         </div>
-        
+
     </div>
     <div class="parallax-container">
         <div class="parallax"><img src="./assets/Images/marsBottom.png"></div>
