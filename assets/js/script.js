@@ -2,7 +2,7 @@ var roverForm = document.querySelector("#roverMenu");
 var dateForm = document.querySelector("#dateSelect");
 var cameraForm = document.querySelector("#cameraSelect");
 var roverImageEl = document.querySelector("#rover_image");
-var weatherImageEl = document.querySelector('#weather_data');
+var weatherImageEl = document.querySelector("#weather_data");
 var description = document.querySelector("#desc");
 var roverChoice = "";
 var cameraChoice = "";
@@ -37,7 +37,7 @@ var getRoverPhotos = function () {
 
 var getWeatherData = function (date) {
   var apiWeatherUrl =
-  'https://api.nasa.gov/planetary/apod?api_key=ZoQFVDjeRVJElw1XyEu82ZMkIXeAWsIJ2HAE23Mq'
+    "https://api.nasa.gov/planetary/apod?api_key=ZoQFVDjeRVJElw1XyEu82ZMkIXeAWsIJ2HAE23Mq";
 
   fetch(apiWeatherUrl)
     .then(function (response) {
