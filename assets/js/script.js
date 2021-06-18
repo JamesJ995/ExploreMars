@@ -8,7 +8,7 @@ var formSubmitHandler = function (event) {
 
 var getRoverPhotos = function (rover, date, camera) {
   var rover = rover || "curiosity";
-  var date = date || "2016-6-3";
+  var date = date || "2016-6-10";
   var camera = camera || "fhaz";
   console.log(rover);
   console.log(date);
@@ -72,3 +72,18 @@ $(document).ready(function () {
 $(document).ready(function () {
   $(".datepicker").datepicker();
 });
+
+renderImg();
+function renderImg() {
+    var rover = localStorage.getItem("rover");
+    var date = localStorage.getItem("date");
+    var camera = localStorage.getItem("camera");
+  
+    if (!rover || !date || !camera) {
+      return;
+    }
+  
+    userRover.textContent = rover;
+    userDate.textContent = date;
+    userCamera.textContent = camera;
+  }
