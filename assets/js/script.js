@@ -48,31 +48,31 @@ var displayPhotos = function (api) {
 var renderMarsWeather = function () {};
 
 //event listener for submit button under the user input
-$('#submitButton').click(function() {
+$("#submitButton").click(function () {
   getRoverPhotos();
-})
+});
 
 roverForm.addEventListener("change", function (event) {
   roverChoice = event.target.value;
-  if(roverChoice == 1){
-    roverChoice = "Curiosity"
+  if (roverChoice == 1) {
+    roverChoice = "Curiosity";
   }
-  if(roverChoice == 2){
-    roverChoice = "Opportunity"
+  if (roverChoice == 2) {
+    roverChoice = "Opportunity";
   }
-  if(roverChoice == 3){
-    roverChoice = "Spirit"
+  if (roverChoice == 3) {
+    roverChoice = "Spirit";
   }
 });
 
-cameraForm.addEventListener("change", function(event){
+cameraForm.addEventListener("change", function (event) {
   cameraChoice = event.target.id;
-})
+});
 
-dateForm.addEventListener("change", function(event) {
+dateForm.addEventListener("change", function (event) {
   dateChoice = event.target.value;
   console.log(dateChoice);
-})
+});
 
 //materialize code to enable features
 $(document).ready(function () {
