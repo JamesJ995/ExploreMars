@@ -1,26 +1,22 @@
-var dropDownEl = document.querySelector("#roverSelect");
-var radioBtnEl = document.querySelector("#buttonSelect");
+var roverForm = document.querySelector("#roverMenu");
+var dateForm = document.querySelector("#dateSelect");
+var cameraForm = document.querySelector("#cameraSelect");
 var roverImageEl = document.querySelector("#rover_image");
+var roverChoice = "";
+var cameraChoice = "";
+var dateChoice = "";
 
-var formSubmitHandler = function (event) {
-  event.preventDefault();
-};
-
-var getRoverPhotos = function (rover, date, camera) {
-  var rover = rover || "curiosity";
-  var date = date || "2016-6-10";
-  var camera = camera || "fhaz";
-  console.log(rover);
-  console.log(date);
-  console.log(camera);
+//api fetch function
+var getRoverPhotos = function () {
+  var date = date || "2016-6-3";
   var apiUrl =
     "https://api.nasa.gov/mars-photos/api/v1/rovers/" +
-    rover +
+    roverChoice +
     "/photos" +
     "?earth_date=" +
     date +
     "&camera=" +
-    camera +
+    cameraChoice +
     "&api_key=ZoQFVDjeRVJElw1XyEu82ZMkIXeAWsIJ2HAE23Mq";
   fetch(apiUrl)
     .then(function (response) {
@@ -37,6 +33,7 @@ var getRoverPhotos = function (rover, date, camera) {
     });
 };
 
+//renders the photo found with getRoverImage()
 var displayPhotos = function (api) {
   if (api.length === 0) {
     return;
@@ -47,24 +44,37 @@ var displayPhotos = function (api) {
   console.log(roverImage);
 };
 
+//renders the weather data found from getMarsWeather
 var renderMarsWeather = function () {};
 
-dropDownEl.addEventListener("submit", formSubmitHandler);
-radioBtnEl.addEventListener("submit", formSubmitHandler);
+//event listener for submit button under the user input
+$('#submitButton').click(function() {
+  getRoverPhotos();
+})
 
-getRoverPhotos();
-$(document).ready(function () {
-  $("select").formSelect();
+roverForm.addEventListener("change", function (event) {
+  roverChoice = event.target.value;
+  if(roverChoice == 1){
+    roverChoice = "Curiosity"
+  }
+  if(roverChoice == 2){
+    roverChoice = "Opportunity"
+  }
+  if(roverChoice == 3){
+    roverChoice = "Spirit"
+  }
 });
 
-var roverChoice = document.getElementById("roverMenu");
+cameraForm.addEventListener("change", function(event){
+  cameraChoice = event.target.id;
+})
 
-roverChoice.addEventListener("change", function (event) {
-  var rover = event.target.value;
-  console.log(rover);
-  getRoverPhotos(rover);
-});
+dateForm.addEventListener("change", function(event) {
+  dateChoice = event.target.value;
+  console.log(dateChoice);
+})
 
+//materialize code to enable features
 $(document).ready(function () {
   $(".materialboxed").materialbox();
 });
@@ -73,17 +83,6 @@ $(document).ready(function () {
   $(".datepicker").datepicker();
 });
 
-renderImg();
-function renderImg() {
-    var rover = localStorage.getItem("rover");
-    var date = localStorage.getItem("date");
-    var camera = localStorage.getItem("camera");
-  
-    if (!rover || !date || !camera) {
-      return;
-    }
-  
-    userRover.textContent = rover;
-    userDate.textContent = date;
-    userCamera.textContent = camera;
-  }
+$(document).ready(function () {
+  $("select").formSelect();
+});

@@ -27,83 +27,70 @@
 
 <body>
     <div class="row">
-        <div class="parallax-container">
-            <div class="parallax"><img src="./assets/Images/marsTop.png"></div>
-        </div>
-        <div class="col s12 center-align" id="titleHeader">
-            <h2>Exploring Mars Rovers</h2>
+        <div class="col l12 s12 center-align" id="titleHeader">
+            <h2>Mars Rovers</h2>
             <p class="lead">
                 Here you can view mars from three of the rovers NASA currently has
                 there, as well as see weather data for the selected martian day.
             </p>
         </div>
 
-    <div class="container" id="roverSelect">
-      <h3>Select a Rover!</h3>
-      <div class="input-field col s12">
-        <select id="roverMenu">
-          <option value="" disabled selected>Choose your option</option>
-          <option value="curiosity">Curiosity</option>
-          <option value="opportunity">Opportunity</option>
-          <option value="spirit">Spirit</option>
-        </select>
-        <label></label>
-      </div>
-    </div>
+        <div class="col l2 s12" id="roverSelect">
+            <div class="container" id="roverSelect">
+                <h3>Select a Rover:</h3>
+                <div class="input-field col s12">
+                    <select id="roverMenu">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1">Curiosity</option>
+                        <option value="2">Opportunity</option>
+                        <option value="3">Spirit</option>
+                    </select>
+                    <label></label>
+                </div>
+            </div>
+            <div class="container" id="dateSelect">
+                <h3>Select a Date:</h3>
+                <input type="text" class="datepicker">
+            </div>
 
-            <div class="container" id="buttonSelect">
+            <div class="container" >
                 <h3>Select a Camera:</h3>
-                <form action="#">
+                <form action="#" id="cameraSelect">
                     <p>
                         <label>
-                            <input id = "frntCamBtn" name="group1" type="radio" />
+                            <input name="group1" type="radio" id="fhaz" />
                             <span>Front Camera</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input id = "bckCamBtn" name="group1" type="radio" />
+                            <input name="group1" type="radio" id="rhaz" />
                             <span>Back Camera</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input id = "navCamBtn" name="group1" type="radio" />
+
+                            <input name="group1" type="radio" id="navcam" />
                             <span>Navigation Camera</span>
                         </label>
                     </p>
                 </form>
+                <a class="waves-effect waves-light btn" id="submitButton">Submit</a>
             </div>
         </div>
-        <div class="col s5">
+        <div class="col l5 s12">
             <hr>
             <h3>Rover Image On: (date here)</h3>
-            <img class="materialboxed z-depth-5" width="650" id="rover_image" src="" />
+            <img class="responsive-img materialboxed z-depth-5" width="650" id="rover_image" src="" />
         </div>
-        <div class="col s5">
+        <div class="col l5 s12">
             <hr>
             <h3>Weather Data For: (date here)</h3>
             <img class="materialboxed z-depth-5" width="650" id="weather_data" src="" />
         </div>
-        
-    </div>
 
-    <div class="container">
-      <img class="img" id="rover_image" src="" />
     </div>
-
-    <div class="container">
-      <h3><br />Recent Searches</h3>
-      <div class="column" style="background-color: #cccccc"></div>
-      <div class="column" style="background-color: #cccccc"></div>
-      <div class="column" style="background-color: #cccccc"></div>
-    </div>
-
-    <footer>
-      <a href="page2.html"
-        >Could put a second page here if needed... prob not</a
-      >
-    </footer>
 
     <!-- Jquery script -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
