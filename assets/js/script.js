@@ -8,7 +8,7 @@ var dateChoice = "";
 
 //api fetch function
 var getRoverPhotos = function () {
-  var date = date || "2016-6-3";
+  var date = date || "2013-2-20";
   var apiUrl =
     "https://api.nasa.gov/mars-photos/api/v1/rovers/" +
     roverChoice +
@@ -33,6 +33,24 @@ var getRoverPhotos = function () {
     });
 };
 
+var getWeatherData = function (date) {
+
+  var apiWeatherUrl = "https://api.nasa.gov/insight_weather/?api_key=ZoQFVDjeRVJElw1XyEu82ZMkIXeAWsIJ2HAE23Mq&feedtype=json&key=" + date + "&ver=1.0";
+  fetch(apiWeatherUrl)
+    .then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          displayWeather(data);
+        });
+      } else {
+        alert("Error: " + response.statusText);
+      }
+    })
+    .catch(function (error) {
+      alert("Unable to connect to NASA");
+    });
+}
+
 //renders the photo found with getRoverImage()
 var displayPhotos = function (api) {
   if (api.length === 0) {
@@ -41,15 +59,15 @@ var displayPhotos = function (api) {
   var roverImage = api.photos[0].img_src;
 
   roverImageEl.setAttribute("src", roverImage);
-  console.log(roverImage);
 };
 
 //renders the weather data found from getMarsWeather
-var renderMarsWeather = function () {};
+var displayWeather = function () {};
 
 //event listener for submit button under the user input
 $('#submitButton').click(function() {
   getRoverPhotos();
+  getWeatherData();
 })
 
 roverForm.addEventListener("change", function (event) {
