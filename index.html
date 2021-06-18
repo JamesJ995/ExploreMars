@@ -53,28 +53,29 @@
                 <input type="text" class="datepicker">
             </div>
 
-            <div class="container" id="buttonSelect">
+            <div class="container" >
                 <h3>Select a Camera:</h3>
-                <form action="#">
+                <form action="#" id="cameraSelect">
                     <p>
                         <label>
-                            <input name="group1" type="radio" id="frntCamBtn" />
+                            <input name="group1" type="radio" id="fhaz" />
                             <span>Front Camera</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input name="group1" type="radio" id="bckCamBtn" />
+                            <input name="group1" type="radio" id="rhaz" />
                             <span>Back Camera</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input name="group1" type="radio" id="navCamBtn" />
+                            <input name="group1" type="radio" id="navcam" />
                             <span>Navigation Camera</span>
                         </label>
                     </p>
                 </form>
+                <a class="waves-effect waves-light btn" id="submitButton">Submit</a>
             </div>
         </div>
         <div class="col l5 s12">
@@ -89,23 +90,6 @@
         </div>
 
     </div>
-
-    <div class="container">
-      <img class="img" id="rover_image" src="" />
-    </div>
-
-    <div class="container">
-      <h3><br />Recent Searches</h3>
-      <div class="column" style="background-color: #cccccc"></div>
-      <div class="column" style="background-color: #cccccc"></div>
-      <div class="column" style="background-color: #cccccc"></div>
-    </div>
-
-    <footer>
-      <a href="page2.html"
-        >Could put a second page here if needed... prob not</a
-      >
-    </footer>
 
     <!-- Jquery script -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
