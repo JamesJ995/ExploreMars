@@ -58,38 +58,52 @@
                 <form action="#" id="cameraSelect">
                     <p>
                         <label>
-                            <input name="group1" type="radio" id="fhaz" />
+                            <input name="front-cam" type="radio" id="Front Camera" />
                             <span>Front Camera</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input name="group1" type="radio" id="rhaz" />
+                            <input name="back-cam" type="radio" id="Back Camera" />
                             <span>Back Camera</span>
                         </label>
                     </p>
                     <p>
                         <label>
 
-                            <input name="group1" type="radio" id="navcam" />
+                            <input name="nav-cam" type="radio" id="Navigation Camera" />
                             <span>Navigation Camera</span>
                         </label>
                     </p>
                 </form>
+
+                <div id="msg"></div>
                 <a class="waves-effect waves-light btn" id="submitButton">Submit</a>
+                
+              
+                <h3>Current Selection:</h3>
+                <p><strong>Rover:</strong> <span id="user-rover"></span></p>
+                <p><strong>Date:</strong> <span id="user-date"></span></p>
+                <p><strong>Camera:</strong> <span id="user-camera"></span></p>
             </div>
         </div>
+
         <div class="col l5 s12">
             <hr>
             <h3>Rover Image On: (date here)</h3>
             <img class="responsive-img materialboxed z-depth-5" width="650" id="rover_image" src="" />
+
+          <h3>Previous Selection:</h3>
+          <p ><strong>Rover:</strong> <span id="user-rover"></span></p>
+          <p ><strong>Date:</strong> <span id="user-date"></span></p>
+          <p ><strong>Camera:</strong> <span id="user-camera"></span></p>
         </div>
+
         <div class="col l5 s12">
             <hr>
             <h3>Weather Data For: (date here)</h3>
             <img class="materialboxed z-depth-5" width="650" id="weather_data" src="" />
         </div>
-
     </div>
 
     <!-- Jquery script -->

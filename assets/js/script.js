@@ -5,16 +5,52 @@ var roverImageEl = document.querySelector("#rover_image");
 var roverChoice = "";
 var cameraChoice = "";
 var dateChoice = "";
+var userRoverSpan = document.querySelector("#user-rover");
+var userDateSpan = document.querySelector("#user-date");
+var userCameraSpan = document.querySelector("#user-camera");
+var submitButton = document.querySelector("#submitButton");
+var msgDiv = document.querySelector("#msg");
+
+function getInfo() {
+  var rover = localStorage.getItem("roverMenu");
+  var date = localStorage.getItem("dateSelect");
+  var camera = localStorage.getItem("cameraSelect");
+
+  if (!rover || !date || !camera) {
+    return;
+  }
+
+  userRoverSpan.textContent = rover;
+  userDateSpan.textContent = date;
+  userCameraSpan.textContent = camera;
+
+}
+
+function displayMessage(type, message) {
+  msgDiv.textContent = message;
+  msgDiv.setAttribute("class", type);
+}
 
 //api fetch function
 var getRoverPhotos = function () {
-  var date = date || "2016-6-3";
+  var roverForm = localStorage.getItem("roverMenu");
+  var dateForm = localStorage.getItem("dateSelect");
+  var cameraForm = localStorage.getItem("cameraSelect");
+
+  if (!roverForm || !dateForm || !cameraForm) {
+    return;
+  }
+
+  userRoverSpan.textContent = roverChoice;
+  userDateSpan.textContent = dateChoice;
+  userCameraSpan.textContent = cameraChoice;
+
   var apiUrl =
     "https://api.nasa.gov/mars-photos/api/v1/rovers/" +
     roverChoice +
     "/photos" +
     "?earth_date=" +
-    date +
+    dateChoice +
     "&camera=" +
     cameraChoice +
     "&api_key=ZoQFVDjeRVJElw1XyEu82ZMkIXeAWsIJ2HAE23Mq";
@@ -85,4 +121,28 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $("select").formSelect();
+});
+
+submitButton.addEventListener("click", function(event) {
+  console.log('SUBMITTED', event);
+  event.preventDefault();
+
+  var rover = document.querySelector("#roverMenu").value;
+  var date = document.querySelector("#dateSelect").value;
+  var camera = document.querySelector('#cameraSelect').value;
+
+  if (rover === "") {
+    displayMessage("error", "Rover cannot be blank");
+  } else if (date === "") {
+    displayMessage("error", "Date cannot be blank");
+  } else if (camera === "") {
+    displayMessage("error", "Camera must be selected");
+  } else {
+    displayMessage("success", "Selection successfully");
+
+    localStorage.setItem("roverMenu", rover);
+    localStorage.setItem("dateSelect", date);
+    localStorage.setItem("cameraSelect", camera);
+    // getRoverPhotos();
+  }
 });
