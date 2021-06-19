@@ -54,7 +54,8 @@ body {
   color: #fff;
 }
 
-.dropdown {
+.select-dropdown,
+.container {
   color: rgba(126, 59, 54, 1);
 }
 
@@ -74,7 +75,3 @@ body {
   background-color: rgba(126, 59, 54, 1);
   color: rgb(231, 155, 74);
 }
-
-/* .input-field {
-  color: rgba(172, 93, 7, 1);
-} */
