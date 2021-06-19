@@ -10,7 +10,8 @@ var dateChoice = "";
 
 //api fetch function
 var getRoverPhotos = function () {
-  var date = date || "2013-2-20";
+  //var date = date || "2013-2-20";
+  var date = date || dateChoice;
   var apiUrl =
     "https://api.nasa.gov/mars-photos/api/v1/rovers/" +
     roverChoice +
@@ -102,6 +103,8 @@ cameraForm.addEventListener("change", function (event) {
 
 dateForm.addEventListener("change", function (event) {
   dateChoice = event.target.value;
+  dateChoice = moment(dateChoice, "MMM DD, YYYY").format("YYYY-MM-DD");
+  date = dateChoice;
   console.log(dateChoice);
 });
 
