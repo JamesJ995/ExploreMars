@@ -20,6 +20,36 @@ body {
   );
 }
 
+<<<<<<< HEAD
 #1 {
   font-weight: bold;
 }
+=======
+.datepicker-date-display {
+  background: radial-gradient(
+    rgba(172, 93, 7, 1) 0%,
+    rgba(126, 59, 54, 1) 82%,
+    rgba(209, 107, 56, 1) 96%
+  );
+}
+
+.datepicker-cancel,
+.datepicker-clear,
+.datepicker-today,
+.datepicker-done {
+  color: rgb(172, 93, 7);
+}
+
+.datepicker-table td.is-today {
+  color: rgba(126, 59, 54, 1);
+}
+
+.datepicker-table td.is-selected {
+  background-color: rgba(209, 107, 56, 1);
+  color: #fff;
+}
+
+.dropdown {
+  color: rgba(126, 59, 54, 1);
+}
+>>>>>>> main

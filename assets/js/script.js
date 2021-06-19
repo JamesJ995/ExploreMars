@@ -2,29 +2,20 @@ var roverForm = document.querySelector("#roverMenu");
 var dateForm = document.querySelector("#dateSelect");
 var cameraForm = document.querySelector("#cameraSelect");
 var roverImageEl = document.querySelector("#rover_image");
+var weatherImageEl = document.querySelector("#weather_data");
+var description = document.querySelector("#desc");
 var roverChoice = "";
+var cameraChoiceId = "";
 var cameraChoice = "";
 var dateChoice = "";
 var userRoverSpan = document.querySelector("#user-rover");
-var userDateSpan = document.querySelector("#user-date");
+var userDate = document.querySelector("#user-date");
+var userDateSpan = document.querySelector("#user-date-span");
+var weatherDate = document.querySelector("#weather-date");
 var userCameraSpan = document.querySelector("#user-camera");
 var submitButton = document.querySelector("#submitButton");
 var msgDiv = document.querySelector("#msg");
 
-function getInfo() {
-  var rover = localStorage.getItem("roverMenu");
-  var date = localStorage.getItem("dateSelect");
-  var camera = localStorage.getItem("cameraSelect");
-
-  if (!rover || !date || !camera) {
-    return;
-  }
-
-  userRoverSpan.textContent = rover;
-  userDateSpan.textContent = date;
-  userCameraSpan.textContent = camera;
-
-}
 
 function displayMessage(type, message) {
   msgDiv.textContent = message;
@@ -33,18 +24,22 @@ function displayMessage(type, message) {
 
 //api fetch function
 var getRoverPhotos = function () {
-  var roverForm = localStorage.getItem("roverMenu");
-  var dateForm = localStorage.getItem("dateSelect");
-  var cameraForm = localStorage.getItem("cameraSelect");
+  //var date = date || "2013-2-20";
+  var rover = localStorage.getItem("roverMenu");
+  var date = localStorage.getItem("dateSelect");
+  var camera = localStorage.getItem("cameraSelect");
 
-  if (!roverForm || !dateForm || !cameraForm) {
+  if (!rover || !date || !camera) {
     return;
   }
 
   userRoverSpan.textContent = roverChoice;
+  userDate.textContent = dateChoice;
   userDateSpan.textContent = dateChoice;
+  weatherDate.textContent = dateChoice;
   userCameraSpan.textContent = cameraChoice;
 
+  var date = date || dateChoice;
   var apiUrl =
     "https://api.nasa.gov/mars-photos/api/v1/rovers/" +
     roverChoice +
@@ -52,13 +47,33 @@ var getRoverPhotos = function () {
     "?earth_date=" +
     dateChoice +
     "&camera=" +
-    cameraChoice +
+    cameraChoiceId +
     "&api_key=ZoQFVDjeRVJElw1XyEu82ZMkIXeAWsIJ2HAE23Mq";
   fetch(apiUrl)
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
           displayPhotos(data);
+        });
+      } else {
+        alert("Error: " + response.statusText);
+      }
+    })
+    .catch(function (error) {
+      alert("Unable to connect to NASA");
+    });
+};
+
+var getWeatherData = function (date) {
+  var apiWeatherUrl =
+    "https://api.nasa.gov/planetary/apod?api_key=ZoQFVDjeRVJElw1XyEu82ZMkIXeAWsIJ2HAE23Mq";
+
+  fetch(apiWeatherUrl)
+    .then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          displayWeather(data);
+          console.log(data);
         });
       } else {
         alert("Error: " + response.statusText);
@@ -77,38 +92,48 @@ var displayPhotos = function (api) {
   var roverImage = api.photos[0].img_src;
 
   roverImageEl.setAttribute("src", roverImage);
-  console.log(roverImage);
 };
 
 //renders the weather data found from getMarsWeather
-var renderMarsWeather = function () {};
+var displayWeather = function (api) {
+  if (api.length === 0) {
+    return;
+  }
+  var weatherImage = api.url;
+
+  weatherImageEl.setAttribute("src", weatherImage);
+  description.textContent = api.explanation;
+};
 
 //event listener for submit button under the user input
-$('#submitButton').click(function() {
+$("#submitButton").click(function () {
   getRoverPhotos();
-})
+  getWeatherData();
+});
 
 roverForm.addEventListener("change", function (event) {
   roverChoice = event.target.value;
-  if(roverChoice == 1){
-    roverChoice = "Curiosity"
+  if (roverChoice == 1) {
+    roverChoice = "Curiosity";
   }
-  if(roverChoice == 2){
-    roverChoice = "Opportunity"
+  if (roverChoice == 2) {
+    roverChoice = "Opportunity";
   }
-  if(roverChoice == 3){
-    roverChoice = "Spirit"
+  if (roverChoice == 3) {
+    roverChoice = "Spirit";
   }
 });
 
-cameraForm.addEventListener("change", function(event){
-  cameraChoice = event.target.id;
-})
+cameraForm.addEventListener("change", function (event) {
+  cameraChoiceId = event.target.id;
+  cameraChoice = event.target.name;
+});
 
-dateForm.addEventListener("change", function(event) {
+dateForm.addEventListener("change", function (event) {
   dateChoice = event.target.value;
-  console.log(dateChoice);
-})
+  dateChoice = moment(dateChoice, "MMM DD, YYYY").format("YYYY-MM-DD");
+  console.log('Formatted Date Choice:', dateChoice);
+});
 
 //materialize code to enable features
 $(document).ready(function () {
@@ -124,21 +149,21 @@ $(document).ready(function () {
 });
 
 submitButton.addEventListener("click", function(event) {
-  console.log('SUBMITTED', event);
   event.preventDefault();
 
-  var rover = document.querySelector("#roverMenu").value;
-  var date = document.querySelector("#dateSelect").value;
-  var camera = document.querySelector('#cameraSelect').value;
+  var rover = roverForm.value;
+  var date = dateForm.value;
+  var camera = cameraForm.value;
+
 
   if (rover === "") {
-    displayMessage("error", "Rover cannot be blank");
+    displayMessage("error", "Rover must be selected");
   } else if (date === "") {
-    displayMessage("error", "Date cannot be blank");
+    displayMessage("error", "Date must be selected");
   } else if (camera === "") {
     displayMessage("error", "Camera must be selected");
   } else {
-    displayMessage("success", "Selection successfully");
+    displayMessage("success", "");
 
     localStorage.setItem("roverMenu", rover);
     localStorage.setItem("dateSelect", date);
