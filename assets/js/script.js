@@ -127,7 +127,7 @@ roverForm.addEventListener("change", function (event) {
 
 cameraForm.addEventListener("change", function (event) {
   cameraChoiceId = event.target.id;
-  cameraChoice = event.target.name;
+  cameraChoice = event.target.value;
 });
 
 dateForm.addEventListener("change", function (event) {
@@ -149,7 +149,7 @@ $(document).ready(function () {
   $("select").formSelect();
 });
 
-submitButton.addEventListener("click", function(event) {
+submitButton.addEventListener("click", function (event) {
   event.preventDefault();
 
   var rover = roverForm.value;

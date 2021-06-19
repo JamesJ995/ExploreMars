@@ -1,5 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="assets/css/materialize.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="assets/css/style.css" media="screen,projection" />
+  <title>Explore Mars</title>
+</head>
+
+<body>
+  <div class="row">
+    <div class="col l12 s12 center-align" id="titleHeader">
+      <h2>Mars Rovers</h2>
+      <p class="lead">
+        Here you can view mars from three of the rovers NASA currently has
+        there, as well as see weather data for the selected martian day.
+      </p>
+    </div>
+
+    <div class="col l2 s12" id="roverSelect">
+      <div class="container" id="roverSelect">
+        <h3>Select a Rover:</h3>
+        <div class="input-field col s12">
+          <select id="roverMenu">
+            <option value="" disabled selected>Select Rover</option>
+            <option value="1">Curiosity</option>
+            <option value="2">Opportunity</option>
+            <option value="3">Spirit</option>
+          </select>
+          <label></label>
+=======
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -57,73 +93,70 @@
         <div class="container" id="dateSelect">
           <h3>Select a Date:</h3>
           <input type="text" class="datepicker" />
-        </div>
-
-        <div class="container">
-          <h3>Select a Camera:</h3>
-          <form action="#" id="cameraSelect">
-            <p>
-              <label>
-                <input name="Front Camera" type="radio" id="fhaz" />
-                <span>Front Camera</span>
-              </label>
-            </p>
-            <p>
-              <label>
-                <input name="Back Camera" type="radio" id="rhaz" />
-                <span>Back Camera</span>
-              </label>
-            </p>
-            <p>
-              <label>
-                <input name="Navigation Camera" type="radio" id="navcam" />
-                <span>Navigation Camera</span>
-              </label>
-            </p>
-          </form>
-          <a class="waves-effect waves-light btn" id="submitButton">Submit</a>
-
-          <div id="msg"></div>
-
-          <h3>Current Selection:</h3>
-          <p><strong>Rover:</strong> <span id="user-rover"></span></p>
-          <p><strong>Date:</strong> <span id="user-date"></span></p>
-          <p><strong>Camera:</strong> <span id="user-camera"></span></p>
-
+>>>>>>> main
         </div>
       </div>
-      <div class="col l5 s12">
-        <hr />
-        <h3>Rover Image On: <span id="user-date-span">(date here)</span></h3>
-        <img
-          class="responsive-img materialboxed z-depth-5"
-          width="650"
-          id="rover_image"
-          src=""
-        />
+      <div class="container" id="dateSelect">
+        <h3>Select a Date:</h3>
+        <input type="text" class="datepicker" />
       </div>
-      <div class="col l5 s12">
-        <hr />
-        <h3>Weather Data For: <span id='weather-date'>(date here)</span></h3>
-        <img
-          class="materialboxed z-depth-5"
-          width="650"
-          id="weather_data"
-          src=""
-        />
-        <p id="desc"></p>
+
+      <div class="container">
+        <h3>Select a Camera:</h3>
+        <form action="#" id="cameraSelect">
+          <p>
+            <label>
+              <input name="group1" type="radio" id="fhaz" value="Front Camera"/>
+              <span>Front Camera</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input name="group1" type="radio" id="rhaz" value="Back Camera"/>
+              <span>Back Camera</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input name="group1" type="radio" id="navcam" value="Navigation Camera"/>
+              <span>Navigation Camera</span>
+            </label>
+          </p>
+        </form>
+        <a class="waves-effect waves-light btn" id="submitButton">Submit</a>
+
+        <div id="msg"></div>
+
+        <h3>Current Selection:</h3>
+        <p><strong>Rover:</strong> <span id="user-rover"></span></p>
+        <p><strong>Date:</strong> <span id="user-date"></span></p>
+        <p><strong>Camera:</strong> <span id="user-camera"></span></p>
+
       </div>
     </div>
+    <div class="col l5 s12">
+      <hr />
+      <h3>Rover Image On: <span id="user-date-span">(date here)</span></h3>
+      <img class="responsive-img materialboxed z-depth-5" width="650" id="rover_image" src="" />
+    </div>
+    <div class="col l5 s12">
+      <hr />
+      <h3>Weather Data For: <span id='weather-date'>(date here)</span></h3>
+      <img class="materialboxed z-depth-5" width="650" id="weather_data" src="" />
+      <p id="desc"></p>
+    </div>
+  </div>
 
-    <!-- Jquery script -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <!-- Jquery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!--moment.js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <!--JavaScript at end of body for optimized loading-->
-    <script type="text/javascript" src="./assets/js/materialize.js"></script>
-    <!-- our java -->
-    <script src="./assets/js/script.js"></script>
-  </body>
+  <!-- Jquery script -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <!-- Jquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!--moment.js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <!--JavaScript at end of body for optimized loading-->
+  <script type="text/javascript" src="./assets/js/materialize.js"></script>
+  <!-- our java -->
+  <script src="./assets/js/script.js"></script>
+</body>
+
 </html>
