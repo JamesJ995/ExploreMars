@@ -64,29 +64,37 @@
           <form action="#" id="cameraSelect">
             <p>
               <label>
-                <input name="group1" type="radio" id="fhaz" />
+                <input name="Front Camera" type="radio" id="fhaz" />
                 <span>Front Camera</span>
               </label>
             </p>
             <p>
               <label>
-                <input name="group1" type="radio" id="rhaz" />
+                <input name="Back Camera" type="radio" id="rhaz" />
                 <span>Back Camera</span>
               </label>
             </p>
             <p>
               <label>
-                <input name="group1" type="radio" id="navcam" />
+                <input name="Navigation Camera" type="radio" id="navcam" />
                 <span>Navigation Camera</span>
               </label>
             </p>
           </form>
           <a class="waves-effect waves-light btn" id="submitButton">Submit</a>
+
+          <div id="msg"></div>
+
+          <h3>Current Selection:</h3>
+          <p><strong>Rover:</strong> <span id="user-rover"></span></p>
+          <p><strong>Date:</strong> <span id="user-date"></span></p>
+          <p><strong>Camera:</strong> <span id="user-camera"></span></p>
+
         </div>
       </div>
       <div class="col l5 s12">
         <hr />
-        <h3>Rover Image On: (date here)</h3>
+        <h3>Rover Image On: <span id="user-date-span">(date here)</span></h3>
         <img
           class="responsive-img materialboxed z-depth-5"
           width="650"
@@ -96,7 +104,7 @@
       </div>
       <div class="col l5 s12">
         <hr />
-        <h3>Weather Data For: (date here)</h3>
+        <h3>Weather Data For: <span id='weather-date'>(date here)</span></h3>
         <img
           class="materialboxed z-depth-5"
           width="650"

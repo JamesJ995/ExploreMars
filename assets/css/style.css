@@ -26,6 +26,10 @@ body {
   );
 }
 
+#1 {
+  font-weight: bold;
+}
+
 .datepicker-date-display {
   background: radial-gradient(
     rgba(172, 93, 7, 1) 0%,
@@ -71,6 +75,6 @@ body {
   color: rgb(231, 155, 74);
 }
 
-.input-field {
-  text: rgba(126, 59, 54, 1);
-}
+/* .input-field {
+  color: rgba(172, 93, 7, 1);
+} */
