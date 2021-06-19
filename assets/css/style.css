@@ -20,6 +20,11 @@ body {
   );
 }
 
+
+#1 {
+  font-weight: bold;
+}
+
 .datepicker-date-display {
   background: radial-gradient(
     rgba(172, 93, 7, 1) 0%,
@@ -47,6 +52,7 @@ body {
 .dropdown {
   color: rgba(126, 59, 54, 1);
 }
+
 
 #submitButton {
   width: 150px;

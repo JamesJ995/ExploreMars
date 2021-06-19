@@ -5,21 +5,49 @@ var roverImageEl = document.querySelector("#rover_image");
 var weatherImageEl = document.querySelector("#weather_data");
 var description = document.querySelector("#desc");
 var roverChoice = "";
+var cameraChoiceId = "";
 var cameraChoice = "";
 var dateChoice = "";
+var userRoverSpan = document.querySelector("#user-rover");
+var userDate = document.querySelector("#user-date");
+var userDateSpan = document.querySelector("#user-date-span");
+var weatherDate = document.querySelector("#weather-date");
+var userCameraSpan = document.querySelector("#user-camera");
+var submitButton = document.querySelector("#submitButton");
+var msgDiv = document.querySelector("#msg");
+
+
+function displayMessage(type, message) {
+  msgDiv.textContent = message;
+  msgDiv.setAttribute("class", type);
+}
 
 //api fetch function
 var getRoverPhotos = function () {
   //var date = date || "2013-2-20";
+  var rover = localStorage.getItem("roverMenu");
+  var date = localStorage.getItem("dateSelect");
+  var camera = localStorage.getItem("cameraSelect");
+
+  if (!rover || !date || !camera) {
+    return;
+  }
+
+  userRoverSpan.textContent = roverChoice;
+  userDate.textContent = dateChoice;
+  userDateSpan.textContent = dateChoice;
+  weatherDate.textContent = dateChoice;
+  userCameraSpan.textContent = cameraChoice;
+
   var date = date || dateChoice;
   var apiUrl =
     "https://api.nasa.gov/mars-photos/api/v1/rovers/" +
     roverChoice +
     "/photos" +
     "?earth_date=" +
-    date +
+    dateChoice +
     "&camera=" +
-    cameraChoice +
+    cameraChoiceId +
     "&api_key=ZoQFVDjeRVJElw1XyEu82ZMkIXeAWsIJ2HAE23Mq";
   fetch(apiUrl)
     .then(function (response) {
@@ -98,14 +126,14 @@ roverForm.addEventListener("change", function (event) {
 });
 
 cameraForm.addEventListener("change", function (event) {
-  cameraChoice = event.target.id;
+  cameraChoiceId = event.target.id;
+  cameraChoice = event.target.name;
 });
 
 dateForm.addEventListener("change", function (event) {
   dateChoice = event.target.value;
   dateChoice = moment(dateChoice, "MMM DD, YYYY").format("YYYY-MM-DD");
-  date = dateChoice;
-  console.log(dateChoice);
+  console.log('Formatted Date Choice:', dateChoice);
 });
 
 //materialize code to enable features
@@ -119,4 +147,28 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $("select").formSelect();
+});
+
+submitButton.addEventListener("click", function(event) {
+  event.preventDefault();
+
+  var rover = roverForm.value;
+  var date = dateForm.value;
+  var camera = cameraForm.value;
+
+
+  if (rover === "") {
+    displayMessage("error", "Rover must be selected");
+  } else if (date === "") {
+    displayMessage("error", "Date must be selected");
+  } else if (camera === "") {
+    displayMessage("error", "Camera must be selected");
+  } else {
+    displayMessage("success", "");
+
+    localStorage.setItem("roverMenu", rover);
+    localStorage.setItem("dateSelect", date);
+    localStorage.setItem("cameraSelect", camera);
+    // getRoverPhotos();
+  }
 });
