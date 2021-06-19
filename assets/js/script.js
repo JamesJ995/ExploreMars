@@ -57,6 +57,7 @@ var getRoverPhotos = function () {
         });
       } else {
         alert("Error: " + response.statusText);
+        console.log(alert);
       }
     })
     .catch(function (error) {

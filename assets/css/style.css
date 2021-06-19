@@ -20,11 +20,11 @@ body {
   );
 }
 
-<<<<<<< HEAD
+
 #1 {
   font-weight: bold;
 }
-=======
+
 .datepicker-date-display {
   background: radial-gradient(
     rgba(172, 93, 7, 1) 0%,
@@ -52,4 +52,25 @@ body {
 .dropdown {
   color: rgba(126, 59, 54, 1);
 }
->>>>>>> main
+
+
+#submitButton {
+  width: 150px;
+  height: 40px;
+  font-size: 15px;
+  text-transform: uppercase;
+  background-color: rgb(231, 155, 74);
+  color: black;
+  cursor: pointer;
+  margin: 30px auto 0;
+  line-height: 45px;
+}
+
+#submitButton:hover {
+  background-color: rgba(126, 59, 54, 1);
+  color: rgb(231, 155, 74);
+}
+
+/* .input-field {
+  color: rgba(172, 93, 7, 1);
+} */
