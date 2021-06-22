@@ -4,6 +4,7 @@ var cameraForm = document.querySelector("#cameraSelect");
 var roverImageEl = document.querySelector("#rover_image");
 var weatherImageEl = document.querySelector("#weather_data");
 var description = document.querySelector("#desc");
+var cameraChoiceName= "";
 var roverChoice = "";
 var cameraChoiceId = "";
 var cameraChoice = "";
