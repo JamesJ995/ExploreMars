@@ -4,11 +4,11 @@ var cameraForm = document.querySelector("#cameraSelect");
 var roverImageEl = document.querySelector("#rover_image");
 var weatherImageEl = document.querySelector("#weather_data");
 var description = document.querySelector("#desc");
-var cameraChoiceName= "";
-var roverChoice = "";
+var cameraChoiceName = "";
+var roverChoice = "Curiosity";
 var cameraChoiceId = "";
-var cameraChoice = "";
-var dateChoice = "";
+var cameraChoice = "fhaz";
+var dateChoice = "2016-01-01";
 var userRoverSpan = document.querySelector("#user-rover");
 var userDate = document.querySelector("#user-date");
 var userDateSpan = document.querySelector("#user-date-span");
@@ -25,13 +25,14 @@ function displayMessage(type, message) {
 
 //api fetch function
 var getRoverPhotos = function () {
-  // var date = date || "2013-2-20";
-  // var rover = localStorage.getItem("roverMenu");
+  //var date = date || "2013-2-20";
+  //var rover = localStorage.getItem("roverMenu");
   // var date = localStorage.getItem("dateSelect");
-  // var camera = localStorage.getItem("cameraSelect");
+  //var camera = localStorage.getItem("cameraSelect");
+  // var apiDate = dateChoice;
 
   // if (!rover || !date || !camera) {
-  //   return;
+  //  return;
   // }
 
   userRoverSpan.textContent = roverChoice;
@@ -50,6 +51,7 @@ var getRoverPhotos = function () {
     "&camera=" +
     cameraChoice +
     "&api_key=ZoQFVDjeRVJElw1XyEu82ZMkIXeAWsIJ2HAE23Mq";
+  console.log(dateChoice);
   fetch(apiUrl)
     .then(function (response) {
       if (response.ok) {
@@ -57,8 +59,7 @@ var getRoverPhotos = function () {
           displayPhotos(data);
         });
       } else {
-        alert("Error: " + response.statusText);
-        console.log(alert);
+        return;
       }
     })
     .catch(function (error) {
@@ -77,7 +78,7 @@ var getWeatherData = function (date) {
           displayWeather(data);
         });
       } else {
-        //alert("Error: " + response.statusText);
+        return;
       }
     })
     .catch(function (error) {
@@ -118,7 +119,6 @@ roverForm.addEventListener("change", function (event) {
   if (roverChoice == 3) {
     roverChoice = "Spirit";
   }
-  localStorage.setItem("roverMenu", roverChoice);
 });
 
 cameraForm.addEventListener("change", function (event) {
@@ -126,14 +126,13 @@ cameraForm.addEventListener("change", function (event) {
 
   cameraChoiceName = event.target.value;
   cameraChoice = event.target.id;
-  localStorage.setItem("cameraSelect", cameraChoice);
 });
 
 dateForm.addEventListener("change", function (event) {
   localStorage.setItem("dateSelectOld", dateChoice);
+
   dateChoice = event.target.value;
   dateChoice = moment(dateChoice, "MMM DD, YYYY").format("YYYY-MM-DD");
-  dateChoice = localStorage.setItem("dateSelect", dateChoice);
 });
 
 //materialize code to enable features
@@ -194,6 +193,9 @@ submitButton.addEventListener("click", function (event) {
   } else {
     displayMessage("success", "");
 
+    localStorage.setItem("dateSelect", dateChoice);
+    localStorage.setItem("roverMenu", roverChoice);
+    localStorage.setItem("cameraSelect", cameraChoice);
     getRoverPhotos();
     getWeatherData();
   }
@@ -206,4 +208,5 @@ recentBtn.addEventListener("click", function () {
   getRoverPhotos();
 });
 
-initLocalStorage();
+//initLocalStorage();
+console.log(dateChoice);
