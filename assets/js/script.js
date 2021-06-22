@@ -4,6 +4,7 @@ var cameraForm = document.querySelector("#cameraSelect");
 var roverImageEl = document.querySelector("#rover_image");
 var weatherImageEl = document.querySelector("#weather_data");
 var description = document.querySelector("#desc");
+var cameraChoiceName= "";
 var roverChoice = "";
 var cameraChoiceId = "";
 var cameraChoice = "";
@@ -37,7 +38,7 @@ var getRoverPhotos = function () {
   userDate.textContent = dateChoice;
   userDateSpan.textContent = dateChoice;
   weatherDate.textContent = moment().format("YYYY-MM-DD");
-  userCameraSpan.textContent = cameraChoice;
+  userCameraSpan.textContent = cameraChoiceName;
 
   //var date = date || dateChoice;
   var apiUrl =
@@ -123,7 +124,7 @@ roverForm.addEventListener("change", function (event) {
 cameraForm.addEventListener("change", function (event) {
   localStorage.setItem("cameraSelectOld", cameraChoice);
 
-  cameraChoiceId = event.target.id;
+  cameraChoiceName = event.target.value;
   cameraChoice = event.target.id;
   localStorage.setItem("cameraSelect", cameraChoice);
 });
