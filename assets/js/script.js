@@ -48,7 +48,7 @@ var getRoverPhotos = function () {
     dateChoice +
     "&camera=" +
     cameraChoice +
-    "&api_key=ZoQFVDjeRVJElw1XyEu82ZMkIXeAWsIJ2HAE23Mq";
+    "&api_key=75q9iK3L0sPQMKsf5WX9Ik4jYT7yhXwGSzvdjZQZ";
   fetch(apiUrl)
     .then(function (response) {
       if (response.ok) {
