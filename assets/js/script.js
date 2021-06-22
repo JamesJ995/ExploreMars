@@ -15,7 +15,7 @@ var weatherDate = document.querySelector("#weather-date");
 var userCameraSpan = document.querySelector("#user-camera");
 var submitButton = document.querySelector("#submitButton");
 var msgDiv = document.querySelector("#msg");
-
+var recentBtn = document.querySelector("#recentSearch");
 
 function displayMessage(type, message) {
   msgDiv.textContent = message;
@@ -24,22 +24,22 @@ function displayMessage(type, message) {
 
 //api fetch function
 var getRoverPhotos = function () {
-  //var date = date || "2013-2-20";
-  var rover = localStorage.getItem("roverMenu");
-  var date = localStorage.getItem("dateSelect");
-  var camera = localStorage.getItem("cameraSelect");
+  // var date = date || "2013-2-20";
+  // var rover = localStorage.getItem("roverMenu");
+  // var date = localStorage.getItem("dateSelect");
+  // var camera = localStorage.getItem("cameraSelect");
 
-  if (!rover || !date || !camera) {
-    return;
-  }
+  // if (!rover || !date || !camera) {
+  //   return;
+  // }
 
   userRoverSpan.textContent = roverChoice;
   userDate.textContent = dateChoice;
   userDateSpan.textContent = dateChoice;
-  weatherDate.textContent = dateChoice;
+  weatherDate.textContent = moment().format("YYYY-MM-DD");
   userCameraSpan.textContent = cameraChoice;
 
-  var date = date || dateChoice;
+  //var date = date || dateChoice;
   var apiUrl =
     "https://api.nasa.gov/mars-photos/api/v1/rovers/" +
     roverChoice +
@@ -47,7 +47,7 @@ var getRoverPhotos = function () {
     "?earth_date=" +
     dateChoice +
     "&camera=" +
-    cameraChoiceId +
+    cameraChoice +
     "&api_key=ZoQFVDjeRVJElw1XyEu82ZMkIXeAWsIJ2HAE23Mq";
   fetch(apiUrl)
     .then(function (response) {
@@ -74,10 +74,9 @@ var getWeatherData = function (date) {
       if (response.ok) {
         response.json().then(function (data) {
           displayWeather(data);
-          console.log(data);
         });
       } else {
-        alert("Error: " + response.statusText);
+        //alert("Error: " + response.statusText);
       }
     })
     .catch(function (error) {
@@ -106,13 +105,8 @@ var displayWeather = function (api) {
   description.textContent = api.explanation;
 };
 
-//event listener for submit button under the user input
-$("#submitButton").click(function () {
-  getRoverPhotos();
-  getWeatherData();
-});
-
 roverForm.addEventListener("change", function (event) {
+  localStorage.setItem("roverSelectOld", roverChoice);
   roverChoice = event.target.value;
   if (roverChoice == 1) {
     roverChoice = "Curiosity";
@@ -123,17 +117,22 @@ roverForm.addEventListener("change", function (event) {
   if (roverChoice == 3) {
     roverChoice = "Spirit";
   }
+  localStorage.setItem("roverMenu", roverChoice);
 });
 
 cameraForm.addEventListener("change", function (event) {
+  localStorage.setItem("cameraSelectOld", cameraChoice);
+
   cameraChoiceId = event.target.id;
-  cameraChoice = event.target.value;
+  cameraChoice = event.target.id;
+  localStorage.setItem("cameraSelect", cameraChoice);
 });
 
 dateForm.addEventListener("change", function (event) {
+  localStorage.setItem("dateSelectOld", dateChoice);
   dateChoice = event.target.value;
   dateChoice = moment(dateChoice, "MMM DD, YYYY").format("YYYY-MM-DD");
-  console.log('Formatted Date Choice:', dateChoice);
+  dateChoice = localStorage.setItem("dateSelect", dateChoice);
 });
 
 //materialize code to enable features
@@ -141,14 +140,40 @@ $(document).ready(function () {
   $(".materialboxed").materialbox();
 });
 
-$(document).ready(function () {
-  $(".datepicker").datepicker();
+//enable materialize datepicker and change its custom options
+document.addEventListener("DOMContentLoaded", function () {
+  var options = {
+    defaultDate: new Date(2016, 1, 3),
+    setDefaultDate: true,
+    minDate: new Date(2008, 1, 1),
+    maxDate: new Date(2020, 9, 15),
+    yearRange: 5,
+  };
+  var elems = document.querySelector(".datepicker");
+  var instance = M.Datepicker.init(elems, options);
+  // instance.open();
+  instance.setDate(new Date(2018, 2, 8));
 });
 
+//enable materialize select form
 $(document).ready(function () {
   $("select").formSelect();
 });
 
+//enable materialize parallax image feature
+$(document).ready(function () {
+  $(".parallax").parallax();
+});
+
+var initLocalStorage = function () {
+  roverChoice = localStorage.getItem("roverMenu");
+  dateChoice = localStorage.getItem("dateSelect");
+  cameraChoice = localStorage.getItem("cameraSelect");
+  getRoverPhotos();
+  getWeatherData();
+};
+
+//on submit button click check for values and save to localStorage
 submitButton.addEventListener("click", function (event) {
   event.preventDefault();
 
@@ -156,19 +181,28 @@ submitButton.addEventListener("click", function (event) {
   var date = dateForm.value;
   var camera = cameraForm.value;
 
-
   if (rover === "") {
     displayMessage("error", "Rover must be selected");
+    return;
   } else if (date === "") {
     displayMessage("error", "Date must be selected");
+    return;
   } else if (camera === "") {
     displayMessage("error", "Camera must be selected");
+    return;
   } else {
     displayMessage("success", "");
 
-    localStorage.setItem("roverMenu", rover);
-    localStorage.setItem("dateSelect", date);
-    localStorage.setItem("cameraSelect", camera);
-    // getRoverPhotos();
+    getRoverPhotos();
+    getWeatherData();
   }
 });
+
+recentBtn.addEventListener("click", function () {
+  roverChoice = localStorage.getItem("roverSelectOld");
+  dateChoice = localStorage.getItem("dateSelectOld");
+  cameraChoice = localStorage.getItem("cameraSelectOld");
+  getRoverPhotos();
+});
+
+initLocalStorage();

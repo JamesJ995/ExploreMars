@@ -75,3 +75,21 @@ body {
   background-color: rgba(126, 59, 54, 1);
   color: rgb(231, 155, 74);
 }
+
+#recentSearch {
+  width: auto;
+  height: auto;
+  font-size: 15px;
+  text-transform: uppercase;
+  background-color: rgb(231, 155, 74);
+  color: black;
+  cursor: pointer;
+  line-height: 25px;
+  display: block;
+  margin-top: 30px;
+}
+
+#recentSearch:hover {
+  background-color: rgba(126, 59, 54, 1);
+  color: rgb(231, 155, 74);
+}

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
 
 <head>
   <meta charset="UTF-8" />
@@ -8,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet" />
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="assets/css/materialize.css" media="screen,projection" />
   <link type="text/css" rel="stylesheet" href="assets/css/style.css" media="screen,projection" />
@@ -15,12 +16,16 @@
 </head>
 
 <body>
+  <div class="parallax-container">
+    <div class="parallax"><img src="./assets/Images/marsTop.png"></div>
+  </div>
   <div class="row">
     <div class="col l12 s12 center-align" id="titleHeader">
       <h2>Mars Rovers</h2>
       <p class="lead">
-        Here you can view mars from three of the rovers NASA currently has
-        there, as well as see weather data for the selected martian day.
+        View Mars from three different NASA rovers,
+        <br />
+        and view weather data for a selected Martian day.
       </p>
     </div>
 
@@ -28,123 +33,75 @@
       <div class="container" id="roverSelect">
         <h3>Select a Rover:</h3>
         <div class="input-field col s12">
-          <select id="roverMenu">
+          <select id="roverMenu" class="roverDropdown">
             <option value="" disabled selected>Select Rover</option>
             <option value="1">Curiosity</option>
             <option value="2">Opportunity</option>
             <option value="3">Spirit</option>
           </select>
           <label></label>
-=======
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--Import Google Icon Font-->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
-      rel="stylesheet"
-    />
-    <!--Import materialize.css-->
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="assets/css/materialize.css"
-      media="screen,projection"
-    />
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="assets/css/style.css"
-      media="screen,projection"
-    />
-    <title>Explore Mars</title>
-  </head>
-
-  <body>
-    <div class="row">
-      <div class="col l12 s12 center-align" id="titleHeader">
-        <h2>Mars Rovers</h2>
-        <p class="lead">
-          View Mars from three different NASA rovers,
-          <br />
-          and view weather data for a selected Martian day.
-        </p>
-      </div>
-
-      <div class="col l2 s12" id="roverSelect">
-        <div class="container" id="roverSelect">
-          <h3>Select a Rover:</h3>
-          <div class="input-field col s12">
-            <select id="roverMenu" class="roverDropdown">
-              <option value="" disabled selected>Select Rover</option>
-              <option value="1">Curiosity</option>
-              <option value="2">Opportunity</option>
-              <option value="3">Spirit</option>
-            </select>
-            <label></label>
-          </div>
-        </div>
-        <div class="container" id="dateSelect">
-          <h3>Select a Date:</h3>
-          <input type="text" class="datepicker" />
->>>>>>> main
         </div>
       </div>
       <div class="container" id="dateSelect">
         <h3>Select a Date:</h3>
         <input type="text" class="datepicker" />
       </div>
+      <a class="d-flex btn-large center-align" id="recentSearch">Go Back to Most Recent Search</a>
+    </div>
 
-      <div class="container">
-        <h3>Select a Camera:</h3>
+    <div class="container container-fluid">
+      <div class="col l2 s12">
+        <h4>Select a Camera:</h4>
         <form action="#" id="cameraSelect">
           <p>
             <label>
-              <input name="group1" type="radio" id="fhaz" value="Front Camera"/>
+              <input name="group1" type="radio" id="fhaz" value="Front Camera" />
               <span>Front Camera</span>
             </label>
           </p>
           <p>
             <label>
-              <input name="group1" type="radio" id="rhaz" value="Back Camera"/>
+              <input name="group1" type="radio" id="rhaz" value="Back Camera" />
               <span>Back Camera</span>
             </label>
           </p>
           <p>
             <label>
-              <input name="group1" type="radio" id="navcam" value="Navigation Camera"/>
+              <input name="group1" type="radio" id="navcam" value="Navigation Camera" />
               <span>Navigation Camera</span>
             </label>
           </p>
         </form>
         <a class="waves-effect waves-light btn" id="submitButton">Submit</a>
 
-        <div id="msg"></div>
 
-        <h3>Current Selection:</h3>
+        <div id="msg"></div>
+        <h4>Current Selection:</h4>
         <p><strong>Rover:</strong> <span id="user-rover"></span></p>
         <p><strong>Date:</strong> <span id="user-date"></span></p>
         <p><strong>Camera:</strong> <span id="user-camera"></span></p>
-
+      </div>
+      <div class="col l5 s12">
+        <hr />
+        <h4>Rover Image On: <span id="user-date-span"></span></h4>
+        <img class="responsive-img materialboxed z-depth-5" width="650" id="rover_image" src="" />
+      </div>
+      <div class="col l4 s12">
+        <hr />
+        <h5>NASA Image For: <span id='weather-date'></span></h5>
+        <img class="materialboxed z-depth-5" width="550" id="weather_data" src="" />
       </div>
     </div>
-    <div class="col l5 s12">
-      <hr />
-      <h3>Rover Image On: <span id="user-date-span">(date here)</span></h3>
-      <img class="responsive-img materialboxed z-depth-5" width="650" id="rover_image" src="" />
-    </div>
-    <div class="col l5 s12">
-      <hr />
-      <h3>Weather Data For: <span id='weather-date'>(date here)</span></h3>
-      <img class="materialboxed z-depth-5" width="650" id="weather_data" src="" />
+    <div class="col l12 s12">
+      <h3>Description of Image of the Day:</h3>
       <p id="desc"></p>
     </div>
+  </div>
+
+
+  <div class="parallax-container">
+    <div class="parallax"><img src="./assets/Images/marsBottom.png"></div>
+  </div>
   </div>
 
   <!-- Jquery script -->
